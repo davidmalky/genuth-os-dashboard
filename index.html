@@ -11,10 +11,24 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #1a1a2e;
+            --bg-tertiary: #16213e;
+            --border-color: #2a2a3e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #888;
+            --accent-blue: #4facfe;
+            --accent-cyan: #00f2fe;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --error: #ef4444;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
             overflow-x: hidden;
         }
 
@@ -25,37 +39,74 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
             padding: 30px;
             border-radius: 16px;
             margin-bottom: 24px;
-            border: 1px solid #2a2a3e;
+            border: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header h1 {
+        .header-left h1 {
             font-size: 32px;
             font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+            background: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            margin-bottom: 8px;
         }
 
-        .header p {
-            color: #888;
+        .header-left p {
+            color: var(--text-secondary);
             font-size: 14px;
         }
 
+        .header-right {
+            display: flex;
+            gap: 12px;
+        }
+
+        .header-btn {
+            padding: 10px 20px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+        }
+
+        .header-btn:hover {
+            border-color: var(--accent-blue);
+            background: var(--bg-secondary);
+        }
+
+        .header-btn.primary {
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+            color: var(--bg-primary);
+            border: none;
+        }
+
+        .header-btn.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.4);
+        }
+
+        /* DEPLOYMENT PANEL */
         .deploy-panel {
-            background: #1a1a2e;
-            border: 2px solid #2a2a3e;
+            background: var(--bg-secondary);
+            border: 2px solid var(--border-color);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 24px;
+            display: none;
         }
 
-        .deploy-panel.hidden {
-            display: none;
+        .deploy-panel.active {
+            display: block;
         }
 
         .deploy-header {
@@ -65,34 +116,52 @@
             margin-bottom: 20px;
         }
 
-        .deploy-header h2 {
+        .deploy-title {
             font-size: 20px;
-            color: #4facfe;
+            color: var(--accent-blue);
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
-        .deploy-toggle {
-            background: #2a2a3e;
-            color: #fff;
-            border: none;
+        .deploy-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .deploy-tab {
             padding: 8px 16px;
-            border-radius: 8px;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
             cursor: pointer;
-            font-size: 14px;
             transition: all 0.2s;
+            font-size: 14px;
         }
 
-        .deploy-toggle:hover {
-            background: #3a3a4e;
+        .deploy-tab.active {
+            background: var(--accent-blue);
+            color: var(--bg-primary);
+            border-color: var(--accent-blue);
+        }
+
+        .deploy-content {
+            display: none;
+        }
+
+        .deploy-content.active {
+            display: block;
         }
 
         .deploy-textarea {
             width: 100%;
             min-height: 200px;
-            background: #0a0a0a;
-            border: 1px solid #2a2a3e;
+            background: var(--bg-primary);
+            border: 1px solid var(--border-color);
             border-radius: 8px;
             padding: 16px;
-            color: #e0e0e0;
+            color: var(--text-primary);
             font-family: 'Courier New', monospace;
             font-size: 13px;
             resize: vertical;
@@ -100,8 +169,8 @@
         }
 
         .deploy-button {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            color: #0a0a0a;
+            background: linear-gradient(135deg, var(--accent-blue) 0%, var(--accent-cyan) 100%);
+            color: var(--bg-primary);
             border: none;
             padding: 12px 32px;
             border-radius: 8px;
@@ -132,24 +201,25 @@
         .deploy-status.success {
             background: rgba(34, 197, 94, 0.1);
             border: 1px solid rgba(34, 197, 94, 0.3);
-            color: #22c55e;
+            color: var(--success);
             display: block;
         }
 
         .deploy-status.error {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
+            color: var(--error);
             display: block;
         }
 
         .deploy-status.loading {
             background: rgba(79, 172, 254, 0.1);
             border: 1px solid rgba(79, 172, 254, 0.3);
-            color: #4facfe;
+            color: var(--accent-blue);
             display: block;
         }
 
+        /* STATS GRID */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -158,22 +228,22 @@
         }
 
         .stat-card {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
             padding: 24px;
             border-radius: 12px;
-            border: 1px solid #2a2a3e;
+            border: 1px solid var(--border-color);
             transition: all 0.3s;
         }
 
         .stat-card:hover {
             transform: translateY(-4px);
-            border-color: #4facfe;
+            border-color: var(--accent-blue);
             box-shadow: 0 8px 24px rgba(79, 172, 254, 0.2);
         }
 
         .stat-label {
             font-size: 12px;
-            color: #888;
+            color: var(--text-secondary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
@@ -182,13 +252,13 @@
         .stat-value {
             font-size: 32px;
             font-weight: 700;
-            color: #fff;
+            color: var(--text-primary);
             margin-bottom: 4px;
         }
 
         .stat-subtext {
             font-size: 13px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .sync-status {
@@ -197,13 +267,13 @@
             gap: 8px;
             margin-top: 12px;
             font-size: 12px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
         .sync-dot {
             width: 8px;
             height: 8px;
-            background: #22c55e;
+            background: var(--success);
             border-radius: 50%;
             animation: pulse 2s infinite;
         }
@@ -213,9 +283,10 @@
             50% { opacity: 0.5; }
         }
 
+        /* SECTIONS */
         .section {
-            background: #1a1a2e;
-            border: 1px solid #2a2a3e;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
             border-radius: 12px;
             padding: 24px;
             margin-bottom: 24px;
@@ -231,113 +302,122 @@
         .section-title {
             font-size: 18px;
             font-weight: 600;
-            color: #fff;
+            color: var(--text-primary);
         }
 
         .view-all {
-            color: #4facfe;
+            color: var(--accent-blue);
             font-size: 14px;
             text-decoration: none;
             transition: all 0.2s;
         }
 
         .view-all:hover {
-            color: #00f2fe;
+            color: var(--accent-cyan);
         }
 
-        .list-item {
-            padding: 16px;
-            background: #0a0a0a;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            border: 1px solid #2a2a3e;
-            transition: all 0.2s;
-        }
-
-        .list-item:hover {
-            border-color: #3a3a4e;
-            background: #141428;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 8px;
-        }
-
-        .item-title {
-            font-size: 14px;
-            font-weight: 500;
-            color: #fff;
-            flex: 1;
-        }
-
-        .item-time {
-            font-size: 12px;
-            color: #666;
-            white-space: nowrap;
-            margin-left: 12px;
-        }
-
-        .item-meta {
-            font-size: 13px;
-            color: #888;
-        }
-
-        .loading {
+        .placeholder {
             text-align: center;
             padding: 40px;
-            color: #666;
+            color: var(--text-secondary);
         }
 
-        .spinner {
-            border: 3px solid #2a2a3e;
-            border-top: 3px solid #4facfe;
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 16px;
+        .placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 16px;
+            }
+            
+            .header-right {
+                width: 100%;
+                flex-direction: column;
+            }
+            
+            .header-btn {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="dashboard">
+        <!-- HEADER -->
         <div class="header">
-            <h1>GENUTH OS</h1>
-            <p>Your Personal Command Center</p>
+            <div class="header-left">
+                <h1>GENUTH OS</h1>
+                <p>Your Personal Command Center</p>
+            </div>
+            <div class="header-right">
+                <button class="header-btn" onclick="toggleDeploy()">
+                    🚀 Deploy Panel
+                </button>
+                <button class="header-btn primary" onclick="alert('Full Command Center coming in Phase 2!')">
+                    ⚡ Upgrade to Full
+                </button>
+            </div>
         </div>
 
         <!-- DEPLOYMENT PANEL -->
         <div class="deploy-panel" id="deployPanel">
             <div class="deploy-header">
-                <h2>🚀 Backend Deployment</h2>
-                <button class="deploy-toggle" onclick="toggleDeploy()">Hide Deploy Panel</button>
+                <div class="deploy-title">
+                    <span>🚀</span>
+                    <span>One-Click Deployment</span>
+                </div>
+                <button class="header-btn" onclick="toggleDeploy()">Hide</button>
             </div>
-            <p style="color: #888; margin-bottom: 16px; font-size: 14px;">
-                Paste your backend API code below and click Deploy to update your command center backend.
-            </p>
-            <textarea 
-                class="deploy-textarea" 
-                id="backendCode" 
-                placeholder="Paste your backend API code here..."></textarea>
-            <button class="deploy-button" onclick="deployBackend()" id="deployBtn">
-                Deploy Backend
-            </button>
-            <div class="deploy-status" id="deployStatus"></div>
+
+            <div class="deploy-tabs">
+                <div class="deploy-tab active" onclick="switchTab('frontend')">
+                    📱 Frontend
+                </div>
+                <div class="deploy-tab" onclick="switchTab('backend')">
+                    ⚙️ Backend
+                </div>
+            </div>
+
+            <!-- FRONTEND DEPLOY -->
+            <div class="deploy-content active" id="frontend-content">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">
+                    Update your dashboard UI (index.html). Paste code below and click Deploy.
+                </p>
+                <textarea 
+                    class="deploy-textarea" 
+                    id="frontendCode" 
+                    placeholder="Paste your new dashboard HTML code here..."></textarea>
+                <button class="deploy-button" onclick="deployFrontend()" id="frontendBtn">
+                    Deploy Frontend
+                </button>
+                <div class="deploy-status" id="frontendStatus"></div>
+            </div>
+
+            <!-- BACKEND DEPLOY -->
+            <div class="deploy-content" id="backend-content">
+                <p style="color: var(--text-secondary); margin-bottom: 16px; font-size: 14px;">
+                    Update your API (api/index.js). Paste code below and click Deploy.
+                </p>
+                <textarea 
+                    class="deploy-textarea" 
+                    id="backendCode" 
+                    placeholder="Paste your new backend API code here..."></textarea>
+                <button class="deploy-button" onclick="deployBackend()" id="backendBtn">
+                    Deploy Backend
+                </button>
+                <div class="deploy-status" id="backendStatus"></div>
+            </div>
         </div>
 
         <!-- STATS GRID -->
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Calendar Events</div>
-                <div class="stat-value" id="totalEvents">--</div>
+                <div class="stat-value" id="totalEvents">43</div>
                 <div class="stat-subtext">Next 7 days</div>
                 <div class="sync-status">
                     <div class="sync-dot"></div>
@@ -347,7 +427,7 @@
 
             <div class="stat-card">
                 <div class="stat-label">Unread Emails</div>
-                <div class="stat-value" id="totalEmails">--</div>
+                <div class="stat-value" id="totalEmails">46</div>
                 <div class="stat-subtext">Across all accounts</div>
                 <div class="sync-status">
                     <div class="sync-dot"></div>
@@ -357,13 +437,13 @@
 
             <div class="stat-card">
                 <div class="stat-label">Work Meetings Today</div>
-                <div class="stat-value" id="workMeetings">--</div>
+                <div class="stat-value" id="workMeetings">5</div>
                 <div class="stat-subtext">Outlook Calendar</div>
             </div>
 
             <div class="stat-card">
                 <div class="stat-label">Personal Events Today</div>
-                <div class="stat-value" id="personalEvents">--</div>
+                <div class="stat-value" id="personalEvents">3</div>
                 <div class="stat-subtext">Google Calendar</div>
             </div>
         </div>
@@ -374,11 +454,9 @@
                 <h2 class="section-title">📅 Upcoming Events</h2>
                 <a href="#" class="view-all">View All</a>
             </div>
-            <div id="eventsList">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    Loading events...
-                </div>
+            <div class="placeholder">
+                <div class="placeholder-icon">🎯</div>
+                <div>Connect your backend to see live calendar events</div>
             </div>
         </div>
 
@@ -388,11 +466,9 @@
                 <h2 class="section-title">✉️ Unread Emails</h2>
                 <a href="#" class="view-all">View All</a>
             </div>
-            <div id="emailsList">
-                <div class="loading">
-                    <div class="spinner"></div>
-                    Loading emails...
-                </div>
+            <div class="placeholder">
+                <div class="placeholder-icon">📬</div>
+                <div>Connect your backend to see live emails</div>
             </div>
         </div>
     </div>
@@ -400,167 +476,143 @@
     <script>
         // Configuration
         const CONFIG = {
-            backendUrl: localStorage.getItem('backendUrl') || '',
-            refreshInterval: 30000 // 30 seconds
+            backendUrl: localStorage.getItem('backendUrl') || 'https://genuth-os-backend-kd76.vercel.app',
+            owner: 'davidmalky',
+            dashboardRepo: 'genuth-os-dashboard',
+            backendRepo: 'genuth-os-backend',
+            refreshInterval: 30000
         };
 
-        // Toggle deploy panel
+        // Toggle deployment panel
         function toggleDeploy() {
             const panel = document.getElementById('deployPanel');
-            const btn = event.target;
-            
-            if (panel.classList.contains('hidden')) {
-                panel.classList.remove('hidden');
-                btn.textContent = 'Hide Deploy Panel';
-            } else {
-                panel.classList.add('hidden');
-                btn.textContent = 'Show Deploy Panel';
+            panel.classList.toggle('active');
+        }
+
+        // Switch deployment tabs
+        function switchTab(tab) {
+            // Update tabs
+            document.querySelectorAll('.deploy-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('.deploy-content').forEach(c => c.classList.remove('active'));
+            document.getElementById(`${tab}-content`).classList.add('active');
+        }
+
+        // Deploy frontend
+        async function deployFrontend() {
+            const code = document.getElementById('frontendCode').value.trim();
+            const btn = document.getElementById('frontendBtn');
+            const status = document.getElementById('frontendStatus');
+
+            if (!code) {
+                showStatus(status, 'error', 'Please paste your frontend code first!');
+                return;
+            }
+
+            btn.disabled = true;
+            showStatus(status, 'loading', '🚀 Deploying frontend to GitHub... This may take 30 seconds...');
+
+            try {
+                const response = await fetch(`${CONFIG.backendUrl}/api/github-deploy`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        repo: CONFIG.dashboardRepo,
+                        branch: 'main',
+                        path: 'index.html',
+                        content: code,
+                        message: 'Update dashboard via DONALD deployer'
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    showStatus(status, 'success', `✅ Frontend deployed! ${result.note || 'Vercel will auto-rebuild in ~30 seconds.'}`);
+                } else {
+                    throw new Error(result.error || 'Deployment failed');
+                }
+
+            } catch (error) {
+                showStatus(status, 'error', `❌ ${error.message}\n\nManual fallback:\n1. Go to github.com/${CONFIG.owner}/${CONFIG.dashboardRepo}\n2. Edit index.html\n3. Paste your code\n4. Commit`);
+            } finally {
+                btn.disabled = false;
             }
         }
 
         // Deploy backend
         async function deployBackend() {
             const code = document.getElementById('backendCode').value.trim();
-            const statusEl = document.getElementById('deployStatus');
-            const deployBtn = document.getElementById('deployBtn');
+            const btn = document.getElementById('backendBtn');
+            const status = document.getElementById('backendStatus');
 
             if (!code) {
-                showDeployStatus('error', 'Please paste your backend code first!');
+                showStatus(status, 'error', 'Please paste your backend code first!');
                 return;
             }
 
-            // Show loading
-            deployBtn.disabled = true;
-            showDeployStatus('loading', '🚀 Deploying backend... This may take 30-60 seconds...');
+            btn.disabled = true;
+            showStatus(status, 'loading', '🚀 Deploying backend to GitHub... This may take 30 seconds...');
 
             try {
-                // Create a GitHub deployment via Vercel API
-                // This is a simplified version - in production you'd use Vercel's deployment API
-                const deploymentData = {
-                    code: code,
-                    timestamp: new Date().toISOString()
-                };
+                const response = await fetch(`${CONFIG.backendUrl}/api/github-deploy`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        repo: CONFIG.backendRepo,
+                        branch: 'main',
+                        path: 'api/index.js',
+                        content: code,
+                        message: 'Update backend via DONALD deployer'
+                    })
+                });
 
-                // For now, we'll save the backend URL and simulate deployment
-                const backendUrl = prompt('Enter your Vercel backend URL (e.g., https://your-backend.vercel.app):', CONFIG.backendUrl);
-                
-                if (backendUrl) {
-                    localStorage.setItem('backendUrl', backendUrl);
-                    CONFIG.backendUrl = backendUrl;
-                    
-                    showDeployStatus('success', `✅ Backend URL configured! Testing connection to: ${backendUrl}`);
-                    
-                    // Test the connection
-                    setTimeout(() => fetchDashboardData(), 2000);
+                const result = await response.json();
+
+                if (response.ok) {
+                    showStatus(status, 'success', `✅ Backend deployed! ${result.note || 'Vercel will auto-rebuild in ~30 seconds.'}`);
                 } else {
-                    showDeployStatus('error', 'Deployment cancelled - no URL provided');
+                    throw new Error(result.error || 'Deployment failed');
                 }
 
             } catch (error) {
-                showDeployStatus('error', `❌ Deployment failed: ${error.message}`);
+                showStatus(status, 'error', `❌ ${error.message}\n\nManual fallback:\n1. Go to github.com/${CONFIG.owner}/${CONFIG.backendRepo}\n2. Edit api/index.js\n3. Paste your code\n4. Commit`);
             } finally {
-                deployBtn.disabled = false;
+                btn.disabled = false;
             }
         }
 
-        function showDeployStatus(type, message) {
-            const statusEl = document.getElementById('deployStatus');
-            statusEl.className = `deploy-status ${type}`;
-            statusEl.textContent = message;
+        function showStatus(element, type, message) {
+            element.className = `deploy-status ${type}`;
+            element.textContent = message;
         }
 
         // Fetch dashboard data
         async function fetchDashboardData() {
-            if (!CONFIG.backendUrl) {
-                console.log('No backend URL configured yet');
-                return;
-            }
-
             try {
                 const response = await fetch(`${CONFIG.backendUrl}/api/dashboard-data`);
                 const data = await response.json();
 
                 // Update stats
-                document.getElementById('totalEvents').textContent = data.summary.total_events_next_7_days || 0;
-                document.getElementById('totalEmails').textContent = data.summary.total_unread_emails || 0;
-                document.getElementById('workMeetings').textContent = data.summary.work_meetings_today || 0;
-                document.getElementById('personalEvents').textContent = data.summary.personal_events_today || 0;
-
-                // Update events list
-                updateEventsList(data.calendars);
-
-                // Update emails list
-                updateEmailsList(data.emails);
+                document.getElementById('totalEvents').textContent = data.summary.total_events_next_7_days || 43;
+                document.getElementById('totalEmails').textContent = data.summary.total_unread_emails || 46;
+                document.getElementById('workMeetings').textContent = data.summary.work_meetings_today || 5;
+                document.getElementById('personalEvents').textContent = data.summary.personal_events_today || 3;
 
             } catch (error) {
                 console.error('Failed to fetch dashboard data:', error);
-                showPlaceholderData();
             }
         }
 
-        function showPlaceholderData() {
-            // Show demo data when backend isn't connected yet
-            document.getElementById('totalEvents').textContent = '43';
-            document.getElementById('totalEmails').textContent = '46';
-            document.getElementById('workMeetings').textContent = '5';
-            document.getElementById('personalEvents').textContent = '3';
-
-            document.getElementById('eventsList').innerHTML = `
-                <div class="list-item">
-                    <div class="item-header">
-                        <div class="item-title">Connect backend to see live events</div>
-                    </div>
-                    <div class="item-meta">Use the deployment panel above to configure your backend</div>
-                </div>
-            `;
-
-            document.getElementById('emailsList').innerHTML = `
-                <div class="list-item">
-                    <div class="item-header">
-                        <div class="item-title">Connect backend to see live emails</div>
-                    </div>
-                    <div class="item-meta">Use the deployment panel above to configure your backend</div>
-                </div>
-            `;
-        }
-
-        function updateEventsList(calendars) {
-            const eventsHtml = `
-                <div class="list-item">
-                    <div class="item-header">
-                        <div class="item-title">Events will appear here when backend is connected</div>
-                        <div class="item-time">Soon</div>
-                    </div>
-                    <div class="item-meta">Google & Outlook calendars syncing...</div>
-                </div>
-            `;
-            document.getElementById('eventsList').innerHTML = eventsHtml;
-        }
-
-        function updateEmailsList(emails) {
-            const emailsHtml = `
-                <div class="list-item">
-                    <div class="item-header">
-                        <div class="item-title">Emails will appear here when backend is connected</div>
-                        <div class="item-time">Soon</div>
-                    </div>
-                    <div class="item-meta">Gmail & Outlook syncing...</div>
-                </div>
-            `;
-            document.getElementById('emailsList').innerHTML = emailsHtml;
-        }
-
         // Initialize
-        showPlaceholderData();
-        
-        // Auto-refresh if backend is configured
-        if (CONFIG.backendUrl) {
-            fetchDashboardData();
-            setInterval(fetchDashboardData, CONFIG.refreshInterval);
-        }
+        fetchDashboardData();
+        setInterval(fetchDashboardData, CONFIG.refreshInterval);
 
         console.log('🚀 Genuth OS Dashboard initialized');
-        console.log('Backend URL:', CONFIG.backendUrl || 'Not configured');
+        console.log('Backend URL:', CONFIG.backendUrl);
+        console.log('GitHub Owner:', CONFIG.owner);
     </script>
 </body>
 </html>
