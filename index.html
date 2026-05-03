@@ -22,4 +22,1421 @@
   --text-muted: #a3a3a3;
   --border: #e5e5e5;
 }
-..." (truncated file - used file from container)
+
+:root.dark {
+  --bg-main: #0d0d0d;
+  --bg-card: #1a1a1a;
+  --bg-hover: #222222;
+  --accent: #3b82f6;
+  --accent-bright: #60a5fa;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #525252;
+  --border: #2a2a2a;
+}
+
+:root {
+  --bg-main: #0d0d0d;
+  --bg-card: #1a1a1a;
+  --bg-hover: #222222;
+  --accent: #3b82f6;
+  --accent-bright: #60a5fa;
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #525252;
+  --border: #2a2a2a;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.5;
+  font-size: 14px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding: 10px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-bright));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.header-controls {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.header-stats {
+  display: flex;
+  gap: 20px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.sync-status {
+  font-size: 11px;
+  color: var(--text-muted);
+  padding: 6px 12px;
+  background: var(--bg-hover);
+  border-radius: 4px;
+}
+
+.sync-status.synced { color: var(--success); }
+.sync-status.syncing { color: var(--warning); }
+.sync-status.error { color: var(--danger); }
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 10px;
+}
+
+/* MODULE */
+.module {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s;
+}
+
+.module:hover {
+  border-color: var(--accent);
+}
+
+.module-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.module-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.module-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.module-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+}
+
+.module-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.module-btn.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* QUICK ACTIONS */
+.quick-actions {
+  grid-column: span 12;
+}
+
+.action-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+.action-btn {
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 9px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.action-btn:hover {
+  border-color: var(--accent);
+  background: var(--bg-card);
+  transform: translateY(-1px);
+}
+
+/* TASKS */
+.tasks {
+  grid-column: span 5;
+}
+
+.filters {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  font-size: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.filter.active {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.task-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.task {
+  background: var(--bg-hover);
+  border-left: 2px solid transparent;
+  padding: 7px 9px;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: 85px 1fr 18px;
+  gap: 8px;
+  align-items: center;
+  font-size: 12px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.task:hover {
+  background: var(--bg-main);
+  transform: translateX(2px);
+}
+
+.task.urgent { border-left-color: var(--danger); }
+.task.high { border-left-color: var(--warning); }
+.task.done { opacity: 0.4; }
+
+.task-cat {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.3px;
+}
+
+.task-text {
+  color: var(--text-primary);
+}
+
+.task-icon {
+  font-size: 13px;
+  text-align: center;
+}
+
+/* METRICS */
+.metrics {
+  grid-column: span 2;
+}
+
+.metric-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.metric {
+  background: var(--bg-hover);
+  padding: 9px;
+  border-radius: 6px;
+  border-left: 2px solid var(--accent);
+}
+
+.metric-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+  margin-bottom: 3px;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--text-primary);
+}
+
+.metric-sub {
+  font-size: 10px;
+  color: var(--success);
+  margin-top: 2px;
+}
+
+/* CALENDAR */
+.calendar {
+  grid-column: span 5;
+}
+
+.day-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.day {
+  background: var(--bg-hover);
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--border);
+}
+
+.day-name {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.day-loc {
+  font-size: 10px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.events {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.event {
+  background: var(--bg-main);
+  padding: 5px 7px;
+  border-radius: 4px;
+  font-size: 11px;
+  border-left: 2px solid transparent;
+}
+
+.event.work { border-left-color: var(--accent); }
+.event.personal { border-left-color: var(--success); }
+.event.zman { border-left-color: var(--warning); font-weight: 600; }
+
+/* FINANCIAL */
+.financial {
+  grid-column: span 7;
+}
+
+.fin-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.fin-card {
+  background: var(--bg-hover);
+  padding: 9px;
+  border-radius: 6px;
+  border-top: 2px solid var(--warning);
+}
+
+.fin-label {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 5px;
+  letter-spacing: 0.3px;
+}
+
+.fin-value {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 3px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.fin-sub {
+  font-size: 10px;
+  color: var(--text-secondary);
+}
+
+/* HEALTH */
+.health {
+  grid-column: span 5;
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.health-card {
+  background: var(--bg-hover);
+  padding: 9px;
+  border-radius: 6px;
+}
+
+.health-title {
+  font-size: 9px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 7px;
+  letter-spacing: 0.3px;
+}
+
+.health-item {
+  font-size: 11px;
+  padding: 2px 0;
+  color: var(--text-primary);
+}
+
+.progress {
+  height: 5px;
+  background: var(--bg-main);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 7px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--success);
+  transition: width 0.3s;
+}
+
+/* DONNA SIDE PANEL */
+.donna-panel {
+  position: fixed;
+  right: -380px;
+  top: 0;
+  width: 380px;
+  height: 100vh;
+  background: var(--bg-card);
+  border-left: 1px solid var(--border);
+  transition: right 0.3s;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 16px rgba(0,0,0,0.3);
+}
+
+.donna-panel.open {
+  right: 0;
+}
+
+.donna-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.donna-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.donna-close {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.donna-close:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.donna-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.donna-messages::-webkit-scrollbar {
+  width: 4px;
+}
+
+.donna-messages::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+.message {
+  background: var(--bg-hover);
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  max-width: 90%;
+}
+
+.message.user {
+  align-self: flex-end;
+  background: var(--accent);
+  color: white;
+}
+
+.donna-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.donna-input {
+  flex: 1;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 8px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.donna-input:focus {
+  border-color: var(--accent);
+}
+
+.donna-send {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 8px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.donna-send:hover {
+  background: var(--accent-bright);
+}
+
+.donna-toggle {
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 14px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  z-index: 999;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.donna-toggle:hover {
+  background: var(--accent-bright);
+  transform: translateY(-2px);
+}
+
+/* EMBEDDED CHAT */
+.chat-container {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  margin-top: 8px;
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease;
+}
+
+.chat-container.open {
+  max-height: 250px;
+}
+
+.chat-messages {
+  height: 180px;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: var(--border);
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-top: 1px solid var(--border);
+}
+
+.chat-input {
+  flex: 1;
+  background: var(--bg-hover);
+  border: 1px solid var(--border);
+  color: var(--text-primary);
+  padding: 6px 10px;
+  font-size: 11px;
+  border-radius: 4px;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+}
+
+.chat-input:focus {
+  border-color: var(--accent);
+}
+
+.chat-send {
+  background: var(--accent);
+  border: none;
+  color: white;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chat-send:hover {
+  background: var(--accent-bright);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1400px) {
+  .tasks, .calendar, .financial, .health { grid-column: span 12 !important; }
+  .metrics { grid-column: span 12 !important; }
+  .metric-stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 7px; }
+}
+
+/* AGENT STATUS */
+.agent-status {
+  grid-column: span 7;
+}
+
+.agent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+}
+
+.agent-card {
+  background: var(--bg-hover);
+  padding: 9px;
+  border-radius: 6px;
+  border-left: 2px solid var(--success);
+}
+
+.agent-card.idle {
+  border-left-color: var(--text-muted);
+}
+
+.agent-name {
+  font-size: 11px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.agent-last-run {
+  font-size: 9px;
+  color: var(--text-muted);
+}
+
+.agent-next {
+  font-size: 9px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">GENUTH OS — PERSONAL</div>
+    <div class="header-controls">
+      <div class="header-stats">
+        <div class="stat-item">
+          <div class="pulse"></div>
+          <span id="agentCount">0 AGENTS ACTIVE</span>
+        </div>
+        <div class="stat-item">
+          <span id="clock">--:--:--</span>
+        </div>
+        <div class="stat-item">
+          <span>TOMS RIVER, NJ</span>
+        </div>
+      </div>
+      <div class="sync-status" id="syncStatus">Not Configured</div>
+      <button class="theme-toggle" onclick="toggleTheme()">☀️ Light</button>
+    </div>
+  </div>
+
+  <div class="grid">
+    
+    <!-- QUICK ACTIONS -->
+    <div class="module quick-actions">
+      <div class="module-header">
+        <div class="module-title">Quick Actions</div>
+        <button class="module-btn" onclick="openSettings()">⚙️ Settings</button>
+      </div>
+      <div class="action-row">
+        <button class="action-btn" onclick="runMorningBrief()">⚡ Morning Brief</button>
+        <button class="action-btn" onclick="filterTasks('urgent', document.querySelectorAll('.tasks .filter')[1])">🔴 Urgent</button>
+        <button class="action-btn" onclick="syncNow()">🔄 Sync Now</button>
+        <button class="action-btn" onclick="extractTasks()">📥 Extract Tasks</button>
+        <button class="action-btn" onclick="openDonnaPanel()">💬 Ask Donna</button>
+      </div>
+    </div>
+
+    <!-- TASKS -->
+    <div class="module tasks">
+      <div class="module-header">
+        <div class="module-title">Active Tasks</div>
+        <div class="module-actions">
+          <button class="module-btn" onclick="toggleChat('tasks')">💬</button>
+          <button class="module-btn" onclick="refreshTasks()">🔄</button>
+        </div>
+      </div>
+      <div class="filters">
+        <button class="filter active" onclick="filterTasks('all', this)">All</button>
+        <button class="filter" onclick="filterTasks('urgent', this)">Urgent</button>
+        <button class="filter" onclick="filterTasks('high', this)">High</button>
+        <button class="filter" onclick="filterTasks('done', this)">Done</button>
+      </div>
+      <div class="task-list" id="taskList"></div>
+      <div class="chat-container" id="chat-tasks">
+        <div class="chat-messages" id="msg-tasks"></div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" placeholder="Ask about tasks...">
+          <button class="chat-send" onclick="sendMsg('tasks')">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- METRICS -->
+    <div class="module metrics">
+      <div class="module-header">
+        <div class="module-title">Metrics</div>
+      </div>
+      <div class="metric-stack">
+        <div class="metric">
+          <div class="metric-label">Open Tasks</div>
+          <div class="metric-value" id="metric-tasks">0</div>
+          <div class="metric-sub" id="metric-tasks-sub">—</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Urgent</div>
+          <div class="metric-value" id="metric-urgent">0</div>
+          <div class="metric-sub" id="metric-urgent-sub">—</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">CPAP</div>
+          <div class="metric-value">5/30</div>
+          <div class="metric-sub">85d left</div>
+        </div>
+        <div class="metric">
+          <div class="metric-label">Agents</div>
+          <div class="metric-value" id="metric-agents">0</div>
+          <div class="metric-sub" id="metric-agents-sub">Idle</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div class="module calendar">
+      <div class="module-header">
+        <div class="module-title">This Week</div>
+        <div class="module-actions">
+          <button class="module-btn" onclick="toggleChat('calendar')">💬</button>
+          <button class="module-btn" onclick="refreshCalendar()">🔄</button>
+        </div>
+      </div>
+      <div class="day-list" id="dayList"></div>
+      <div class="chat-container" id="chat-calendar">
+        <div class="chat-messages" id="msg-calendar"></div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" placeholder="Ask about calendar...">
+          <button class="chat-send" onclick="sendMsg('calendar')">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FINANCIAL -->
+    <div class="module financial">
+      <div class="module-header">
+        <div class="module-title">Financial</div>
+        <div class="module-actions">
+          <button class="module-btn" onclick="toggleChat('financial')">💬</button>
+        </div>
+      </div>
+      <div class="fin-grid" id="finGrid"></div>
+      <div class="chat-container" id="chat-financial">
+        <div class="chat-messages" id="msg-financial"></div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" placeholder="Ask about finances...">
+          <button class="chat-send" onclick="sendMsg('financial')">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEALTH -->
+    <div class="module health">
+      <div class="module-header">
+        <div class="module-title">Health</div>
+        <div class="module-actions">
+          <button class="module-btn" onclick="toggleChat('health')">💬</button>
+        </div>
+      </div>
+      <div class="health-grid" id="healthGrid"></div>
+      <div class="chat-container" id="chat-health">
+        <div class="chat-messages" id="msg-health"></div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" placeholder="Ask about health...">
+          <button class="chat-send" onclick="sendMsg('health')">Send</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- AGENT STATUS -->
+    <div class="module agent-status">
+      <div class="module-header">
+        <div class="module-title">Autonomous Agents</div>
+        <button class="module-btn" onclick="toggleChat('agents')">💬</button>
+      </div>
+      <div class="agent-grid" id="agentGrid"></div>
+      <div class="chat-container" id="chat-agents">
+        <div class="chat-messages" id="msg-agents"></div>
+        <div class="chat-input-row">
+          <input type="text" class="chat-input" placeholder="Ask about agents...">
+          <button class="chat-send" onclick="sendMsg('agents')">Send</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- DONNA SIDE PANEL -->
+<div class="donna-panel" id="donnaPanel">
+  <div class="donna-header">
+    <div class="donna-title">Donna — Your AI Chief of Staff</div>
+    <button class="donna-close" onclick="closeDonnaPanel()">Close</button>
+  </div>
+  <div class="donna-messages" id="donnaMessages"></div>
+  <div class="donna-input-row">
+    <input type="text" class="donna-input" id="donnaInput" placeholder="Ask Donna anything...">
+    <button class="donna-send" onclick="sendDonnaMsg()">Send</button>
+  </div>
+</div>
+
+<button class="donna-toggle" onclick="openDonnaPanel()">💬 Ask Donna</button>
+
+<script>
+// ═══════════════════════════════════════════════════════════════════════════
+// CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════
+
+let SYNC_URL = localStorage.getItem('sync_url') || '';
+let AUTO_SYNC_INTERVAL = 30000; // 30 seconds
+let syncIntervalId = null;
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DATA STORE
+// ═══════════════════════════════════════════════════════════════════════════
+
+let localData = {
+  tasks: [],
+  calendar: [],
+  financial: {},
+  health: {},
+  agents: []
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CLOUD SYNC FUNCTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+async function loadFromCloud(key) {
+  if (!SYNC_URL) return null;
+  
+  try {
+    const response = await fetch(`${SYNC_URL}/api/load?key=${key}`);
+    if (response.ok) {
+      const data = await response.json();
+      return JSON.parse(data.value);
+    }
+  } catch (error) {
+    console.error('Load error:', error);
+  }
+  return null;
+}
+
+async function saveToCloud(key, value) {
+  if (!SYNC_URL) return false;
+  
+  try {
+    const response = await fetch(`${SYNC_URL}/api/save`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        key: key,
+        value: JSON.stringify(value)
+      })
+    });
+    return response.ok;
+  } catch (error) {
+    console.error('Save error:', error);
+    return false;
+  }
+}
+
+async function syncNow() {
+  updateSyncStatus('syncing');
+  
+  // Load all data from cloud
+  const taskData = await loadFromCloud('tasks');
+  const calendarData = await loadFromCloud('calendar');
+  const financialData = await loadFromCloud('financial');
+  const healthData = await loadFromCloud('health');
+  const agentData = await loadFromCloud('agents');
+  
+  if (taskData) localData.tasks = taskData;
+  if (calendarData) localData.calendar = calendarData;
+  if (financialData) localData.financial = financialData;
+  if (healthData) localData.health = healthData;
+  if (agentData) localData.agents = agentData;
+  
+  // Render everything
+  renderTasks();
+  renderCalendar();
+  renderFinancial();
+  renderHealth();
+  renderAgents();
+  
+  updateSyncStatus('synced');
+  setTimeout(() => updateSyncStatus('idle'), 2000);
+}
+
+function updateSyncStatus(status) {
+  const el = document.getElementById('syncStatus');
+  if (status === 'syncing') {
+    el.textContent = 'Syncing...';
+    el.className = 'sync-status syncing';
+  } else if (status === 'synced') {
+    el.textContent = 'Synced ✓';
+    el.className = 'sync-status synced';
+  } else if (status === 'error') {
+    el.textContent = 'Sync Error';
+    el.className = 'sync-status error';
+  } else {
+    el.textContent = SYNC_URL ? 'Ready' : 'Not Configured';
+    el.className = 'sync-status';
+  }
+}
+
+function startAutoSync() {
+  if (syncIntervalId) clearInterval(syncIntervalId);
+  if (SYNC_URL) {
+    syncIntervalId = setInterval(syncNow, AUTO_SYNC_INTERVAL);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// SETTINGS
+// ═══════════════════════════════════════════════════════════════════════════
+
+function openSettings() {
+  const url = prompt('Enter your Genuth OS Sync URL (from Vercel):', SYNC_URL);
+  if (url !== null) {
+    SYNC_URL = url.trim();
+    localStorage.setItem('sync_url', SYNC_URL);
+    updateSyncStatus('idle');
+    startAutoSync();
+    if (SYNC_URL) {
+      syncNow();
+    }
+  }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// THEME
+// ═══════════════════════════════════════════════════════════════════════════
+
+function toggleTheme() {
+  const root = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  if (root.classList.contains('dark')) {
+    root.classList.remove('dark');
+    root.classList.add('light');
+    btn.textContent = '🌙 Dark';
+    localStorage.setItem('theme', 'light');
+  } else {
+    root.classList.remove('light');
+    root.classList.add('dark');
+    btn.textContent = '☀️ Light';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+// Load saved theme
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  document.documentElement.classList.add('light');
+  document.querySelector('.theme-toggle').textContent = '🌙 Dark';
+} else {
+  document.documentElement.classList.add('dark');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CLOCK
+// ═══════════════════════════════════════════════════════════════════════════
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('en-US', { hour12: false });
+}
+setInterval(updateClock, 1000);
+updateClock();
+
+// ═══════════════════════════════════════════════════════════════════════════
+// TASKS
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initTasks() {
+  localData.tasks = [
+    {cat: 'Financial', task: 'Yeshiva tuition hold (BuyersEdge/Mark)', priority: 'urgent', status: 'active'},
+    {cat: 'Tech', task: 'Cube ACR → Drive backup', priority: 'high', status: 'active'},
+    {cat: 'Tech', task: 'SMS → Drive pipeline', priority: 'high', status: 'active'},
+    {cat: 'Migration', task: 'Coinbase → Gmail', priority: 'high', status: 'active'},
+    {cat: 'Migration', task: 'Zoom → Gmail', priority: 'high', status: 'active'},
+    {cat: 'Financial', task: 'Donor Fund setup', priority: 'high', status: 'active'},
+    {cat: 'Health', task: 'CPAP compliance (5/30)', priority: 'high', status: 'active'},
+    {cat: 'Tech', task: 'Wave AI recovery', priority: 'medium', status: 'active'},
+    {cat: 'Health', task: 'MyAir install', priority: 'medium', status: 'active'},
+    {cat: 'Migration', task: 'U-Mail → Gmail', priority: 'medium', status: 'active'},
+  ];
+}
+
+let currentFilter = 'all';
+
+function renderTasks(filter = currentFilter) {
+  currentFilter = filter;
+  const list = document.getElementById('taskList');
+  const filtered = localData.tasks.filter(t => {
+    if (filter === 'all') return true;
+    if (filter === 'urgent') return t.priority === 'urgent';
+    if (filter === 'high') return t.priority === 'high';
+    if (filter === 'done') return t.status === 'done';
+    return true;
+  });
+
+  list.innerHTML = filtered.map(t => {
+    const icon = t.status === 'done' ? '🟢' : t.priority === 'urgent' ? '🔴' : t.priority === 'high' ? '🟡' : '⚪';
+    return `<div class="task ${t.priority} ${t.status}">
+      <div class="task-cat">${t.cat}</div>
+      <div class="task-text">${t.task}</div>
+      <div class="task-icon">${icon}</div>
+    </div>`;
+  }).join('');
+  
+  updateMetrics();
+}
+
+function filterTasks(filter, btn) {
+  document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTasks(filter);
+}
+
+function refreshTasks() {
+  syncNow();
+}
+
+function updateMetrics() {
+  const total = localData.tasks.filter(t => t.status === 'active').length;
+  const urgent = localData.tasks.filter(t => t.priority === 'urgent' && t.status === 'active').length;
+  
+  document.getElementById('metric-tasks').textContent = total;
+  document.getElementById('metric-urgent').textContent = urgent;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// CALENDAR
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initCalendar() {
+  localData.calendar = [
+    {day: 'Mon, Apr 28', loc: 'Office', events: [{title: 'י׳ אייר', type: 'personal'}, {title: 'כ״ה בעומר', type: 'personal'}]},
+    {day: 'Tue, Apr 29', loc: 'Office', events: [{title: 'י״א אייר', type: 'personal'}]},
+    {day: 'Wed, Apr 30', loc: 'WFH', events: [{title: 'Provista • 7:30 AM', type: 'work'}, {title: 'IT Transition • 8:00 AM', type: 'work'}]},
+    {day: 'Fri, May 2', loc: 'WFH', events: [{title: 'Candle Lighting • 7:29 PM', type: 'zman'}]}
+  ];
+}
+
+function renderCalendar() {
+  document.getElementById('dayList').innerHTML = localData.calendar.map(d => `
+    <div class="day">
+      <div class="day-header">
+        <div class="day-name">${d.day}</div>
+        <div class="day-loc">${d.loc}</div>
+      </div>
+      <div class="events">
+        ${d.events.map(e => `<div class="event ${e.type}">${e.title}</div>`).join('')}
+      </div>
+    </div>
+  `).join('');
+}
+
+function refreshCalendar() {
+  syncNow();
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FINANCIAL
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initFinancial() {
+  localData.financial = {
+    items: [
+      {label: 'Prime Procurement', value: '$77K-$90K', sub: 'Balance remaining'},
+      {label: 'Donor Fund', value: 'Pending', sub: 'Setup required'},
+      {label: 'Capital One Spark', value: '$2K', sub: 'Bonus tracking'},
+      {label: 'Yeshiva Tuition', value: 'On Hold', sub: 'Waiting BEP/Mark'}
+    ]
+  };
+}
+
+function renderFinancial() {
+  document.getElementById('finGrid').innerHTML = localData.financial.items.map(f => `
+    <div class="fin-card">
+      <div class="fin-label">${f.label}</div>
+      <div class="fin-value">${f.value}</div>
+      <div class="fin-sub">${f.sub}</div>
+    </div>
+  `).join('');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// HEALTH
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initHealth() {
+  localData.health = {
+    appointments: [
+      {date: 'May 8', provider: 'Tapezza'},
+      {date: 'May 15', provider: 'SightMD'}
+    ],
+    cpap: {
+      current: 5,
+      target: 30,
+      daysLeft: 85
+    }
+  };
+}
+
+function renderHealth() {
+  document.getElementById('healthGrid').innerHTML = `
+    <div class="health-card">
+      <div class="health-title">Appointments</div>
+      ${localData.health.appointments.map(a => `<div class="health-item">${a.date} — ${a.provider}</div>`).join('')}
+    </div>
+    <div class="health-card">
+      <div class="health-title">CPAP Compliance</div>
+      <div class="health-item">Started: Apr 22</div>
+      <div class="health-item">Target: 30 nights (4+ hrs)</div>
+      <div class="health-item">Window: 90 days</div>
+      <div class="progress">
+        <div class="progress-fill" style="width: ${(localData.health.cpap.current / localData.health.cpap.target * 100)}%;"></div>
+      </div>
+      <div style="font-size: 10px; color: var(--text-muted); margin-top: 4px;">${localData.health.cpap.current} nights • ${localData.health.cpap.daysLeft} days left</div>
+    </div>
+  `;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// AGENTS
+// ═══════════════════════════════════════════════════════════════════════════
+
+function initAgents() {
+  localData.agents = [
+    {name: 'Morning Brief', status: 'active', lastRun: '6:00 AM today', next: 'Tomorrow 6:00 AM'},
+    {name: 'Task Extractor', status: 'active', lastRun: '10 mins ago', next: 'In 50 mins'},
+    {name: 'Email Triage', status: 'active', lastRun: '2 mins ago', next: 'Continuous'},
+    {name: 'Financial Tracker', status: 'idle', lastRun: 'Yesterday', next: 'End of day'},
+    {name: 'Health Monitor', status: 'active', lastRun: '1 hour ago', next: 'In 3 hours'},
+    {name: 'Migration Tracker', status: 'idle', lastRun: 'Yesterday', next: 'Daily 8 PM'},
+    {name: 'Work Intel', status: 'active', lastRun: '30 mins ago', next: 'In 30 mins'}
+  ];
+}
+
+function renderAgents() {
+  const grid = document.getElementById('agentGrid');
+  grid.innerHTML = localData.agents.map(a => `
+    <div class="agent-card ${a.status}">
+      <div class="agent-name">${a.name}</div>
+      <div class="agent-last-run">Last: ${a.lastRun}</div>
+      <div class="agent-next">Next: ${a.next}</div>
+    </div>
+  `).join('');
+  
+  const activeCount = localData.agents.filter(a => a.status === 'active').length;
+  document.getElementById('agentCount').textContent = `${activeCount} AGENTS ACTIVE`;
+  document.getElementById('metric-agents').textContent = activeCount;
+  document.getElementById('metric-agents-sub').textContent = activeCount === localData.agents.length ? 'All active' : `${localData.agents.length - activeCount} idle`;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// EMBEDDED CHATS
+// ═══════════════════════════════════════════════════════════════════════════
+
+function toggleChat(module) {
+  const chat = document.getElementById('chat-' + module);
+  const isOpen = chat.classList.contains('open');
+  
+  document.querySelectorAll('.chat-container').forEach(c => c.classList.remove('open'));
+  
+  if (!isOpen) {
+    chat.classList.add('open');
+    const msgs = document.getElementById('msg-' + module);
+    if (!msgs.children.length) {
+      msgs.innerHTML = `<div class="message">Agent ready. How can I help with ${module}?</div>`;
+    }
+  }
+}
+
+function sendMsg(module) {
+  const input = document.querySelector(`#chat-${module} .chat-input`);
+  const msgs = document.getElementById('msg-' + module);
+  const text = input.value.trim();
+  
+  if (!text) return;
+  
+  msgs.innerHTML += `<div class="message user">${text}</div>`;
+  input.value = '';
+  
+  setTimeout(() => {
+    msgs.innerHTML += `<div class="message">Processing request for ${module}...</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 400);
+  
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DONNA SIDE PANEL
+// ═══════════════════════════════════════════════════════════════════════════
+
+function openDonnaPanel() {
+  const panel = document.getElementById('donnaPanel');
+  panel.classList.add('open');
+  const msgs = document.getElementById('donnaMessages');
+  if (!msgs.children.length) {
+    msgs.innerHTML = `<div class="message">Hi David! I'm Donna, your AI Chief of Staff. How can I help you today?</div>`;
+  }
+  document.getElementById('donnaInput').focus();
+}
+
+function closeDonnaPanel() {
+  document.getElementById('donnaPanel').classList.remove('open');
+}
+
+function sendDonnaMsg() {
+  const input = document.getElementById('donnaInput');
+  const msgs = document.getElementById('donnaMessages');
+  const text = input.value.trim();
+  
+  if (!text) return;
+  
+  msgs.innerHTML += `<div class="message user">${text}</div>`;
+  input.value = '';
+  
+  setTimeout(() => {
+    msgs.innerHTML += `<div class="message">I'm processing your request. In the full version, I'll connect to Claude API and give you real AI assistance!</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 500);
+  
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+document.getElementById('donnaInput').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') sendDonnaMsg();
+});
+
+// ═══════════════════════════════════════════════════════════════════════════
+// QUICK ACTIONS
+// ═══════════════════════════════════════════════════════════════════════════
+
+function runMorningBrief() {
+  openDonnaPanel();
+  setTimeout(() => {
+    const msgs = document.getElementById('donnaMessages');
+    msgs.innerHTML += `<div class="message">Running morning briefing agent...</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 300);
+}
+
+function extractTasks() {
+  openDonnaPanel();
+  setTimeout(() => {
+    const msgs = document.getElementById('donnaMessages');
+    msgs.innerHTML += `<div class="message">Scanning Gmail, Calendar, and Fathom for new tasks...</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 300);
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════════════════════════════════════
+
+function init() {
+  initTasks();
+  initCalendar();
+  initFinancial();
+  initHealth();
+  initAgents();
+  
+  renderTasks();
+  renderCalendar();
+  renderFinancial();
+  renderHealth();
+  renderAgents();
+  
+  if (SYNC_URL) {
+    startAutoSync();
+    syncNow();
+  } else {
+    updateSyncStatus('idle');
+  }
+}
+
+init();
+</script>
+
+</body>
+</html>
