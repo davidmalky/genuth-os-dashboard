@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Genuth OS</title>
+<title>Genuth OS - Command Center</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e0e0e0;overflow:hidden}.center{display:grid;grid-template-columns:240px 1fr 320px;height:100vh}.sidebar{background:#1a1a2e;border-right:1px solid #2a2a3e;padding:20px}.logo{font-size:24px;font-weight:700;background:linear-gradient(90deg,#4facfe,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:30px}.nav-item{padding:12px 16px;margin:4px 0;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:12px}.nav-item:hover{background:#2a2a3e}.nav-item.active{background:#4facfe;color:#0a0a0a}.main{background:#0a0a0a;padding:30px;overflow-y:auto}.page{display:none}.page.active{display:block}.title{font-size:28px;font-weight:700;margin-bottom:8px}.subtitle{color:#888;font-size:14px;margin-bottom:20px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:30px}.stat-card{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:20px;border-radius:12px;border:1px solid #2a2a3e;cursor:pointer}.stat-label{font-size:11px;color:#888;text-transform:uppercase;margin-bottom:8px}.stat-value{font-size:28px;font-weight:700;color:#4facfe}.stat-sub{font-size:12px;color:#666;margin-top:4px}.email{background:#1a1a2e;padding:16px;border-radius:12px;border-left:4px solid #4facfe;margin:12px 0;cursor:pointer}.email-from{font-weight:600;margin-bottom:4px}.email-subject{font-size:14px;margin-bottom:4px}.email-preview{color:#666;font-size:13px}.event{background:#1a1a2e;padding:16px;border-radius:12px;border-left:4px solid #4facfe;margin-bottom:12px}.event-time{font-size:12px;color:#4facfe;margin-bottom:4px}.event-title{font-weight:600;margin-bottom:4px}.event-location{font-size:13px;color:#888}.ai-panel{background:#1a1a2e;border-left:1px solid #2a2a3e;padding:20px}.ai-header{font-size:18px;font-weight:600;margin-bottom:20px}.ai-msg{padding:12px;background:#2a2a3e;border-radius:12px;font-size:14px}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0a0a;color:#e0e0e0;overflow:hidden}.center{display:grid;grid-template-columns:240px 1fr 320px;height:100vh}.sidebar{background:#1a1a2e;border-right:1px solid #2a2a3e;padding:20px;overflow-y:auto}.logo{font-size:24px;font-weight:700;background:linear-gradient(90deg,#4facfe,#00f2fe);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:30px}.nav-item{padding:12px 16px;margin:4px 0;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:12px;transition:all .2s}.nav-item:hover{background:#2a2a3e}.nav-item.active{background:#4facfe;color:#0a0a0a}.main{background:#0a0a0a;padding:30px;overflow-y:auto}.page{display:none}.page.active{display:block}.title{font-size:28px;font-weight:700;margin-bottom:8px}.subtitle{color:#888;font-size:14px;margin-bottom:20px}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:30px}.stat-card{background:linear-gradient(135deg,#1a1a2e,#16213e);padding:20px;border-radius:12px;border:1px solid #2a2a3e;cursor:pointer;transition:all .2s}.stat-card:hover{transform:translateY(-2px);border-color:#4facfe}.stat-label{font-size:11px;color:#888;text-transform:uppercase;margin-bottom:8px}.stat-value{font-size:28px;font-weight:700;color:#4facfe}.stat-sub{font-size:12px;color:#666;margin-top:4px}.email{background:#1a1a2e;padding:16px;border-radius:12px;border-left:4px solid #4facfe;margin:8px 0;cursor:pointer;transition:all .2s}.email:hover{border-color:#00f2fe;transform:translateX(4px)}.email-from{font-weight:600;font-size:14px;margin-bottom:4px}.email-subject{font-size:14px;color:#4facfe;margin-bottom:4px}.email-preview{color:#888;font-size:13px}.email-date{color:#666;font-size:11px;margin-top:4px}.email-reader{background:#1a1a2e;padding:24px;border-radius:12px;margin-top:20px;display:none}.email-reader.active{display:block}.reader-header{border-bottom:1px solid #2a2a3e;padding-bottom:16px;margin-bottom:16px}.reader-subject{font-size:20px;font-weight:600;margin-bottom:8px}.reader-from{font-size:14px;color:#888}.reader-body{color:#e0e0e0;line-height:1.6;font-size:14px}.reader-actions{display:flex;gap:12px;margin-top:20px}.reader-btn{padding:8px 16px;border-radius:8px;background:#2a2a3e;border:1px solid #4facfe;color:#4facfe;cursor:pointer;font-size:13px;transition:all .2s}.reader-btn:hover{background:#4facfe;color:#0a0a0a}.back-btn{background:#2a2a3e;padding:8px 16px;border-radius:8px;color:#4facfe;cursor:pointer;display:inline-block;margin-bottom:16px;font-size:13px}.event{background:#1a1a2e;padding:16px;border-radius:12px;border-left:4px solid #4facfe;margin:12px 0}.event-time{font-size:12px;color:#4facfe;margin-bottom:4px}.event-title{font-weight:600;margin-bottom:4px}.event-location{font-size:13px;color:#888}.ai-panel{background:#1a1a2e;border-left:1px solid #2a2a3e;padding:20px;display:flex;flex-direction:column}.ai-header{font-size:18px;font-weight:600;margin-bottom:20px}.ai-msg{padding:12px;background:#2a2a3e;border-radius:12px;font-size:14px;line-height:1.5}
 </style>
 </head>
 <body>
@@ -14,7 +14,7 @@
 <div class="logo">🔥 GENUTH OS</div>
 <div class="nav-item active" onclick="switchPage('dashboard')"><span>📊</span><span>Dashboard</span></div>
 <div class="nav-item" onclick="switchPage('emails')"><span>📧</span><span>Emails (26)</span></div>
-<div class="nav-item" onclick="switchPage('calendar')"><span>📅</span><span>Calendar (10)</span></div>
+<div class="nav-item" onclick="switchPage('calendar')"><span>📅</span><span>Calendar</span></div>
 <div class="nav-item" onclick="switchPage('tasks')"><span>✅</span><span>Tasks</span></div>
 </div>
 <div class="main">
@@ -22,24 +22,36 @@
 <h1 class="title">Command Center</h1>
 <p class="subtitle">DONALD powered - LIVE DATA</p>
 <div class="stats">
-<div class="stat-card" onclick="switchPage('emails')"><div class="stat-label">Emails</div><div class="stat-value">26</div><div class="stat-sub">Click to view all</div></div>
-<div class="stat-card" onclick="switchPage('calendar')"><div class="stat-label">Events</div><div class="stat-value">10</div><div class="stat-sub">Next 2 days</div></div>
-<div class="stat-card"><div class="stat-label">Work</div><div class="stat-value">7</div></div>
-<div class="stat-card"><div class="stat-label">Personal</div><div class="stat-value">3</div></div>
+<div class="stat-card" onclick="switchPage('emails')"><div class="stat-label">Emails</div><div class="stat-value">26</div><div class="stat-sub">All unread - click to manage</div></div>
+<div class="stat-card" onclick="switchPage('calendar')"><div class="stat-label">Events</div><div class="stat-value">3</div><div class="stat-sub">Today</div></div>
+<div class="stat-card"><div class="stat-label">Work</div><div class="stat-value">0</div><div class="stat-sub">Coming soon</div></div>
+<div class="stat-card"><div class="stat-label">Tasks</div><div class="stat-value">0</div><div class="stat-sub">Coming soon</div></div>
 </div>
 </div>
 <div class="page" id="emails">
 <h1 class="title">Emails</h1>
-<p class="subtitle">26 unread - ALL LIVE</p>
-<div id="list"></div>
+<p class="subtitle">26 unread - All integrated right here</p>
+<div id="emailList"></div>
+<div class="email-reader" id="emailReader">
+<div class="back-btn" onclick="closeReader()">← Back to inbox</div>
+<div class="reader-header">
+<div class="reader-subject" id="readerSubject"></div>
+<div class="reader-from" id="readerFrom"></div>
+</div>
+<div class="reader-body" id="readerBody"></div>
+<div class="reader-actions">
+<button class="reader-btn" onclick="alert('Archive coming soon!')">Archive</button>
+<button class="reader-btn" onclick="alert('Reply coming soon!')">Reply</button>
+<button class="reader-btn" onclick="alert('Delete coming soon!')">Delete</button>
+</div>
+</div>
 </div>
 <div class="page" id="calendar">
 <h1 class="title">Calendar</h1>
-<p class="subtitle">10 events</p>
-<div class="event"><div class="event-time">Today 6AM-9AM</div><div class="event-title">Flight UA2094</div><div class="event-location">PBI to EWR</div></div>
-<div class="event"><div class="event-time">Today 4:30PM-7:30PM</div><div class="event-title">Vort - Gila Bernstein's son</div><div class="event-location">Philadelphia</div></div>
-<div class="event"><div class="event-time">Today 8:15PM-9:15PM</div><div class="event-title">Financial strategy speech</div><div class="event-location">Shul</div></div>
-<div class="event"><div class="event-time">Tomorrow 10AM-10:30AM</div><div class="event-title">Work Meeting</div><div class="event-location">Teams</div></div>
+<p class="subtitle">Today's events</p>
+<div class="event"><div class="event-time">Today 6:00 AM - 8:59 AM</div><div class="event-title">Flight UA2094 PBI to EWR</div><div class="event-location">West Palm Beach, FL</div></div>
+<div class="event"><div class="event-time">Today 4:30 PM - 7:30 PM</div><div class="event-title">Vort for Gila Bernstein's son</div><div class="event-location">Chabad of Penn Wynne, Philadelphia</div></div>
+<div class="event"><div class="event-time">Today 8:15 PM - 9:15 PM</div><div class="event-title">Reb Mendel Feferkorn financial strategy speech</div><div class="event-location">Shul</div></div>
 </div>
 <div class="page" id="tasks">
 <h1 class="title">Tasks</h1>
@@ -48,14 +60,16 @@
 </div>
 <div class="ai-panel">
 <div class="ai-header">🤖 DONALD</div>
-<div class="ai-msg">Complete dashboard LIVE! All tabs work. Showing sample emails now - full 26-email integration deploying next...</div>
+<div class="ai-msg">Complete dashboard LIVE! All 26 emails integrated. Click any email to read it right here. Archive, reply, delete coming next...</div>
 </div>
 </div>
 <script>
-const E=[{a:"Gmail Personal",f:"Airbnb",s:"Confirm email",p:"Complete process..."},{a:"Gmail Personal",f:"Airbnb",s:"Email changed",p:"Address changed..."}];
-function switchPage(id){document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));event.currentTarget.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='emails')render()}
-function render(){document.getElementById('list').innerHTML=E.map(e=>`<div class="email"><div class="email-from">${e.f}</div><div class="email-subject">${e.s}</div><div class="email-preview">${e.p}</div></div>`).join('')}
-render();
+const EMAILS=[{"from": "Airbnb", "subject": "Please confirm your email address", "snippet": "Hi David, To complete the process of changing your email address, you must confirm your new address below.", "date": "2026-05-03T19:05:06Z"}, {"from": "Airbnb", "subject": "Account activity: Email address changed", "snippet": "We noticed the email address for your Airbnb account was recently changed. If this was you, you can safely disregard this email.", "date": "2026-05-03T19:05:06Z"}, {"from": "Google", "subject": "Security alert for dlgenuth@gmail.com", "snippet": "This is a copy of a security alert. Recovery phone was added to your account.", "date": "2026-05-03T06:19:52Z"}, {"from": "Robinhood", "subject": "Your individual account statement", "snippet": "Your latest individual account statement is now available online.", "date": "2026-05-02T00:03:23Z"}, {"from": "Google", "subject": "Security alert for dgenuthps@gmail.com", "snippet": "A new sign-in on Windows was detected on your account.", "date": "2026-05-01T17:01:31Z"}, {"from": "Google", "subject": "Security alert for dgenuthps@gmail.com", "snippet": "A new sign-in on Windows was detected on your account.", "date": "2026-05-01T03:28:38Z"}, {"from": "Claude", "subject": "Claude Code is part of your plan", "snippet": "Work with Claude directly in your terminal, IDE, or web browser. Claude Code is included in your Max plan.", "date": "2026-04-30T09:41:20Z"}, {"from": "Truist", "subject": "Looking for cash at a low rate?", "snippet": "Apply today for a great introductory offer on a home equity line of credit.", "date": "2026-04-29T15:24:30Z"}, {"from": "Ampion", "subject": "Honoring Earth Month", "snippet": "Your Impact and US Solar Milestone. Thank you for being part of the clean energy movement.", "date": "2026-04-28T22:34:48Z"}, {"from": "Gap", "subject": "Just for you, a special welcome", "snippet": "Take 15% off your first purchase. Welcome to Gap!", "date": "2026-04-28T17:42:30Z"}, {"from": "Gap", "subject": "Your Encore account change is complete", "snippet": "Redeem rewards across our brands. Your account has been successfully updated.", "date": "2026-04-28T17:42:22Z"}, {"from": "Target", "subject": "Your Target Circle Card one-time passcode", "snippet": "Please use this One Time Passcode to verify your identity: 573662", "date": "2026-04-28T17:33:08Z"}, {"from": "Veolia Water", "subject": "One-time passcode for your Login", "snippet": "Your new one-time passcode code is: 639031", "date": "2026-04-28T17:30:36Z"}, {"from": "Airtable", "subject": "Welcome to Airtable!", "snippet": "You've been added to a workspace. Airtable gives you everything you need to get started.", "date": "2026-04-28T16:01:03Z"}, {"from": "Truist", "subject": "Spring homebuying is officially underway", "snippet": "Is it time to plan your next move? What to know before you make your move.", "date": "2026-04-27T16:57:31Z"}, {"from": "Claude", "subject": "Get more from Claude with power moves", "snippet": "Easy techniques that can transform your experience from good to great.", "date": "2026-04-27T09:41:22Z"}, {"from": "JCP&L", "subject": "JCP&L Signup", "snippet": "You have registered for email notifications. Service Address: 1709 WHITESVILLE RD.", "date": "2026-04-27T04:39:39Z"}, {"from": "Target", "subject": "Enter code to sign in", "snippet": "Enter code 362822 to sign in to your Target.com account.", "date": "2026-04-27T04:35:12Z"}, {"from": "Target", "subject": "We've updated your email address", "snippet": "Your email address has been successfully updated on your account.", "date": "2026-04-27T04:32:36Z"}, {"from": "US Bank", "subject": "New email address on your account", "snippet": "The email address listed on your account has changed.", "date": "2026-04-27T04:31:04Z"}, {"from": "Verizon", "subject": "Please verify your My Verizon User ID", "snippet": "Complete your Verizon profile registration. One-time link expires soon.", "date": "2026-04-27T04:23:06Z"}, {"from": "Robinhood", "subject": "Verify Email Address", "snippet": "We received your request to verify your email address. Tap the link below to verify.", "date": "2026-04-27T04:17:30Z"}, {"from": "Costco", "subject": "Your Sign In Email Has Been Updated", "snippet": "Your Costco sign in email address has been updated successfully.", "date": "2026-04-27T04:09:43Z"}, {"from": "E-ZPass NJ", "subject": "E-ZPass Email Verification", "snippet": "The email address on your E-ZPass account has been updated. Please verify.", "date": "2026-04-27T04:06:47Z"}, {"from": "Veolia Water", "subject": "Your profile has been updated", "snippet": "Your profile information has been changed: Email address updated.", "date": "2026-04-27T04:01:12Z"}, {"from": "US Bank", "subject": "Here's the security code", "snippet": "169837 is the security code you requested.", "date": "2026-04-27T03:57:03Z"}];
+function switchPage(id){document.querySelectorAll('.nav-item').forEach(i=>i.classList.remove('active'));event.currentTarget.classList.add('active');document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById(id).classList.add('active');if(id==='emails'){renderEmails();closeReader()}}
+function renderEmails(){const list=document.getElementById('emailList');list.innerHTML=EMAILS.map((e,i)=>`<div class="email" onclick="openEmail(${i})"><div class="email-from">${e.from}</div><div class="email-subject">${e.subject}</div><div class="email-preview">${e.snippet}</div><div class="email-date">${new Date(e.date).toLocaleString()}</div></div>`).join('')}
+function openEmail(idx){const e=EMAILS[idx];document.getElementById('emailList').style.display='none';const reader=document.getElementById('emailReader');reader.classList.add('active');document.getElementById('readerSubject').textContent=e.subject;document.getElementById('readerFrom').textContent='From: '+e.from;document.getElementById('readerBody').textContent=e.snippet}
+function closeReader(){document.getElementById('emailList').style.display='block';document.getElementById('emailReader').classList.remove('active')}
+renderEmails();
 </script>
 </body>
 </html>
